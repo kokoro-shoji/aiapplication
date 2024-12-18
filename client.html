@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!-- ビューポートの設定：モバイルデバイスでの表示を最適化 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>シンプルTODO</title>
+    <title>家計簿</title>
     <style>
         /* フォームの上下に余白を追加 */
         .todo-form {
@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>TODOリスト</h1>
+    <h1>家計簿</h1>
     
     <!-- TODOを追加するためのフォーム -->
     <form id="todoForm" class="todo-form">
@@ -31,7 +31,7 @@
 
     <script>
         // APIのベースURL：実際のAPIサーバーのアドレス
-        const API_URL = 'http://localhost:8000/todos';
+        const API_URL = 'http://52.195.7.194:8000/todos';
         
         /**
          * APIとの通信を行う汎用関数
@@ -62,6 +62,8 @@
                            ${todo.completed ? 'checked' : ''} 
                            onchange="toggleTodo(${todo.id}, this.checked)">
                     <span class="${todo.completed ? 'completed' : ''}">${todo.title}</span>
+                    <span class="todo-date"> ${todo.date || 'today'}</span>
+                    <span class="todo-date"> ${todo.note || 'メモ'}</span>
                     <button onclick="deleteTodo(${todo.id})">削除</button>
                 </li>
             `;
